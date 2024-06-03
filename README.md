@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Lucia Auth Email Sqlite
 
-## Getting Started
+The following is an example implementing Lucia email authentication with Sqlite.
 
-First, run the development server:
+## Requirements
+
+- Node `v20` or greater
+- Pnpm
+
+## Quick Setup
+
+### 1 - Install Dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# FROM: ./
+
+pnpm install;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2 - Set Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# FROM: ./
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+cp .env.example .env.local
+```
 
-## Learn More
+### 3 - Generate Local Database
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# FROM: ./
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+pnpm db:gen;
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 4 - Push Database Changes
 
-## Deploy on Vercel
+```bash
+# FROM: ./
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+pnpm db:push;
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 5 - Run App
+
+```bash
+# FROM: ./
+
+pnpm dev;
+
+# [Expected Output]:
+#   ▲ Next.js 14.2.3
+#   - Local:        http://localhost:3000
+#   - Environments: .env.local
+# 
+#  ✓ Starting...
+#  ✓ Ready in 1785ms
+```
