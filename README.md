@@ -22,7 +22,7 @@ pnpm install;
 ```bash
 # FROM: ./
 
-cp .env.example .env.local
+cp .env.example .env;
 ```
 
 ### 3 - Generate Local Database
@@ -55,4 +55,16 @@ pnpm dev;
 # 
 #  ✓ Starting...
 #  ✓ Ready in 1785ms
+```
+
+### 5 - Run Drizzle Studio
+
+```bash
+# FROM: ./
+
+pnpm db:studio;
+
+# [Expected Output]:
+# ...
+# Drizzle Studio is up and running on https://local.drizzle.studio
 ```
