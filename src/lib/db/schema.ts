@@ -1,5 +1,6 @@
 // Imports
 // =================================
+import crypto from "crypto";
 import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
 
 // Tables
@@ -8,7 +9,7 @@ import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
  * Main user table
  */
 export const userTable = sqliteTable("user", {
-  id: text("id").primaryKey(),
+  id: text("id").default(crypto.randomUUID()).primaryKey(),
   username: text("username").notNull().unique(),
   password: text("password"),
 });

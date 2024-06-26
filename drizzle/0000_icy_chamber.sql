@@ -6,7 +6,7 @@ CREATE TABLE `session` (
 );
 --> statement-breakpoint
 CREATE TABLE `user` (
-	`id` text PRIMARY KEY NOT NULL,
+	`id` text PRIMARY KEY DEFAULT '57224961-ddb7-4b0f-981f-7a4fa14c96ef' NOT NULL,
 	`username` text NOT NULL,
 	`password` text
 );

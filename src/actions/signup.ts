@@ -17,20 +17,20 @@ export const signUp = async (values: z.infer<typeof FormSchemaSignUp>) => {
   console.log({ values });
 
   const hashedPassword = await argon2.hash(values.password)
-  const userId = generateId(15)
 
   try {
-    await db
+    const user = await db
       .insert(userTable)
       .values({
-        id: userId,
         username: values.email,
         password: hashedPassword,
       })
       .returning({
         id: userTable.id,
         username: userTable.username,
-      })
+      });
+
+    const userId = user?.[0].id;
 
     const session = await lucia.createSession(userId, {
       expiresIn: 60 * 60 * 24 * 30,
